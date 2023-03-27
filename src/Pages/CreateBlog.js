@@ -14,13 +14,16 @@ const BlogFormPage = (props) => {
 
 	//instantiate navigator 
 	const navigate = useNavigate();
-
+	console.log(urlEndPoint)
     const handleCreateBlog = async () => {
+		console.log('hello')
+		console.log(setShouldRefresh)
 
 		//if we are creating a new entry, let's refresh the page
 		setShouldRefresh(true)
 
-		console.log(urlEndPoint)
+
+
 		const req =  {
             title: title,
             author: author,
@@ -28,8 +31,10 @@ const BlogFormPage = (props) => {
             categories: categories
           }
 		console.log(req);
+		
         axios.post(`${urlEndPoint}/blogs/create-one`, req)
           .then(function (response) {
+			setShouldRefresh(false);
             console.log(response);
           },{
 			'Content-Type': 'application/x-www-form-urlencoded'
@@ -38,7 +43,9 @@ const BlogFormPage = (props) => {
             console.log(error);
           }); 
 
-		  setShouldRefresh(false);
+		 
+		  navigate("/")
+
     }
 
 
@@ -69,7 +76,6 @@ const BlogFormPage = (props) => {
 			<br/>
 			<button onClick={()=>{
 				handleCreateBlog()
-				navigate("/")
 			}}>Create Blog</button>
 		</div>
 	)

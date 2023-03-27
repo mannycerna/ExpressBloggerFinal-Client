@@ -14,12 +14,12 @@ const urlEndPoint = "http://localhost:3001";
 
 function App() {
   const [blogs, setBlogs] = useState([]);
-  const [setShouldRefresh] = useState(false);
+  const [shouldSetRefresh ,setShouldRefresh] = useState(false);
 
   console.log(urlEndPoint);
 
   useEffect(() => {
-    axios.get(`${urlEndPoint}/all`)
+    axios.get(`${urlEndPoint}/blogs/all`)
     .then(function (response) {
       console.log(response);
       setBlogs(response.data.blogs);
@@ -30,7 +30,7 @@ function App() {
     .finally(function () {
   
     });
-  },[])
+  },[shouldSetRefresh])
   
     const router = createBrowserRouter([
       {

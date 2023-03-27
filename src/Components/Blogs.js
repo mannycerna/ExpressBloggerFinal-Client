@@ -98,11 +98,7 @@ const Blogs = (props) => {
 
           )}
           <p>Is Complete: {blog.isComplete ? "Complete" : "Incomplete"}</p>
-          <p>Creation Date: {blog.creationDate.toString()}</p>
-          <p>Last Modified: {blog.lastModified.toString()}</p>
-          <p>
-            Completed Date: {blog.completedDate && blog.completedDate.toString()}
-          </p>
+           <p>Creation Date: {blog.createdAt.toString()}</p>
           <button
             onClick={() => {
               handleSetBlogComplete();
