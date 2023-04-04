@@ -9,6 +9,7 @@ const Blogs = (props) => {
     const [text, setText] = useState(blog.text);
     const [author, setAuthor] = useState(blog.author);
     const [categories, setCategories] = useState(blog.categories);
+    const [complete, setComplete] = useState(blog.complete);
     const [isEditing, setIsEditing] = useState(false);
 
     //implement handlers 
@@ -40,7 +41,8 @@ const Blogs = (props) => {
         title: title,
         text: text,
         categories: categories,
-        author: author
+        author: author,
+        complete:false,
       } 
      axios.put(`${urlEndPoint}/blogs/update-one/${blog.id}`, req)
       .then(function (response) {
@@ -85,12 +87,13 @@ const Blogs = (props) => {
               }}
             />
           )}
-
-            {!isEditing && <p>{blog.text}</p>}
+            
+            
+          {!isEditing && <p>{blog.complete}</p>}
           {isEditing && (
             <input
-              type="text"
-              value={text}
+              type="boolean"
+              value={complete}
               onChange={(e) => {
                 setText(e.target.value);
               }}

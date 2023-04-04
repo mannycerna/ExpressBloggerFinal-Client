@@ -14,7 +14,7 @@ const urlEndPoint = "http://localhost:3001";
 
 function App() {
   const [blogs, setBlogs] = useState([]);
-  const [shouldSetRefresh ,setShouldRefresh] = useState(false);
+  const [shouldRefresh ,setShouldRefresh] = useState(false);
 
   console.log(urlEndPoint);
 
@@ -30,7 +30,7 @@ function App() {
     .finally(function () {
   
     });
-  },[shouldSetRefresh])
+  },[shouldRefresh])
   
     const router = createBrowserRouter([
       {
